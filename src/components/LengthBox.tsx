@@ -7,10 +7,11 @@ type Props = {
         x: number,
         y: number
     },
-    updateLength: (newLength: number) => void
+    updateLength: (newLength: number) => void,
+    angle: number
 }
 
-const LengthBox = ({length, midpoint, updateLength}: Props) => {
+const LengthBox = ({length, midpoint, updateLength, angle}: Props) => {
 
     const handleChange = (value: number) => {
         if (value === 0 || isNaN(value)) {
@@ -22,7 +23,8 @@ const LengthBox = ({length, midpoint, updateLength}: Props) => {
     return (
         <StyledInput style={{
             left: midpoint.x-32, // Width/2 
-            top: midpoint.y-15, // Height/2            
+            top: midpoint.y-15, // Height/2
+            transform: `rotate(${angle}rad)`          
         }}
         type="number"
         value={length.toFixed(0)}

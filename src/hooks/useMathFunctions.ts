@@ -57,7 +57,7 @@ const useMathFunctions = () => {
     const midpoint = {x: ( x1+(x2-x1)/2), y: (y1+(y2-y1)/2)}
 
 
-    return { x1, y1, x2, y2, getLength, updateLength, updatePoint, midpoint }
+    return { x1, y1, x2, y2, getLength, getAngle, updateLength, updatePoint, midpoint }
 };
 
 export default useMathFunctions

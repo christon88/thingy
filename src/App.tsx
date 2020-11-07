@@ -7,11 +7,11 @@ import styled from 'styled-components';
 
 const App = () => {
 
-  const { x1, y1, x2, y2, getLength, updateLength, updatePoint, midpoint } = useMathFunctions()
+  const { x1, y1, x2, y2, getLength, getAngle, updateLength, updatePoint, midpoint } = useMathFunctions()
 
   return (
     <StyledSpan onDragOver={(event) => event.preventDefault()}>
-      <LengthBox length={getLength()} updateLength={updateLength} midpoint={midpoint} /> 
+      <LengthBox length={getLength()} updateLength={updateLength} midpoint={midpoint} angle={getAngle(x1, x2, y1, y2)} /> 
       <Line x1={x1} y1={y1} x2={x2} y2={y2} length={getLength()}  />
       <Circle x={x1} y={y1} changeX={updatePoint("x1")} changeY={updatePoint("y1")} />
       <Circle x={x2} y={y2} changeX={updatePoint("x2")} changeY={updatePoint("y2")} />
