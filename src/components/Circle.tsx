@@ -18,9 +18,12 @@ const Circle = ({x, y, changeX, changeY}: Props) => {
             left: x,
             top: y
         }}>
-            <StyledInput type="number" value={x.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeX(parseInt(e.currentTarget.value))} />
-            <br/>
-            <StyledInput type="number" value={y.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeY(parseInt(e.currentTarget.value))} />
+            <span>
+                X<StyledInput type="number" value={x.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeX(parseInt(e.currentTarget.value))} />
+            </span>
+            <span>
+                Y<StyledInput type="number" value={y.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeY(parseInt(e.currentTarget.value))} />
+            </span>
         </StyledCircle>
     )
 }
@@ -33,13 +36,21 @@ const StyledCircle = styled.span`
     width: 150px;
     height: 150px;
     background: #ff705a;
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 `;
 
 const StyledInput = styled.input`
-    width: 50px;
+    width: 60px;
+    margin: 8px;
+    background: 0 0;
+    border: none;
+    border-bottom: 1px solid #071a39;
+    text-align: center;
+    font-size: 13px;
 `
 
 export default Circle
