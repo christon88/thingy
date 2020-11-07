@@ -12,6 +12,13 @@ type Props = {
 
 const LengthBox = ({length, midpoint, updateLength}: Props) => {
 
+    const handleChange = (value: number) => {
+        if (value === 0 || isNaN(value)) {
+            value = 100
+        } 
+        updateLength(value)
+    }
+
     return (
         <StyledInput style={{
             left: midpoint.x-32, // Width/2 
@@ -19,8 +26,7 @@ const LengthBox = ({length, midpoint, updateLength}: Props) => {
         }}
         type="number"
         value={length.toFixed(0)}
-        min="100"
-        onChange={(e: React.FormEvent<HTMLInputElement> ) => updateLength(parseInt(e.currentTarget.value)) }
+        onChange={(e: React.FormEvent<HTMLInputElement> ) => handleChange(parseInt(e.currentTarget.value)) }
         />  
     )
 }
