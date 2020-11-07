@@ -2,7 +2,7 @@ import React from 'react';
 import Circle from './components/Circle'
 import Line from './components/Line'
 import LengthBox from './components/LengthBox'
-import useMathFunctions from './components/useMathFunctions'
+import useMathFunctions from './hooks/useMathFunctions'
 import styled from 'styled-components';
 
 const App = () => {
