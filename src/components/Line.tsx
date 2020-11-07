@@ -4,16 +4,17 @@ import styled from 'styled-components';
 
 type Props = {
     x1: number,
-    y1: number
+    y1: number,
     x2: number,
-    y2: number
+    y2: number,
+    length: number,
 }
 
-const Line = ({x1, y1, x2, y2}: Props) => {
+const Line = ({x1, y1, x2, y2, length }: Props) => {
 
-    const radius = 75
-        
+    
     return(
+        <>
         <svg style={{
             left: 0,
             top: 0,
@@ -21,8 +22,11 @@ const Line = ({x1, y1, x2, y2}: Props) => {
             height: "100%",
             width: "100%"
         }}>
-            <StyledLine x1={x1+radius} y1={y1+radius} x2={x2+radius} y2={y2+radius} />
-        </svg> 
+            <StyledLine x1={x1} y1={y1} x2={x2} y2={y2} />
+        </svg>
+        
+        
+        </> 
     )
 }
 

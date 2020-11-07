@@ -10,6 +10,7 @@ type Props = {
 }
 
 const Circle = ({x, y, changeX, changeY}: Props) => {
+    
 
     
     return(
@@ -17,9 +18,9 @@ const Circle = ({x, y, changeX, changeY}: Props) => {
             left: x,
             top: y
         }}>
-            <StyledInput type="number" value={x} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeX(parseInt(e.currentTarget.value))} />
+            <StyledInput type="number" value={x.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeX(parseInt(e.currentTarget.value))} />
             <br/>
-            <StyledInput type="number" value={y} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeY(parseInt(e.currentTarget.value))} />
+            <StyledInput type="number" value={y.toFixed(0)} onChange={(e: React.FormEvent<HTMLInputElement> ) =>  changeY(parseInt(e.currentTarget.value))} />
         </StyledCircle>
     )
 }
@@ -27,6 +28,8 @@ const Circle = ({x, y, changeX, changeY}: Props) => {
 const StyledCircle = styled.span`
     position: absolute;
     border-radius: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
     width: 150px;
     height: 150px;
     background: #ff705a;
