@@ -38,9 +38,7 @@ const useMathFunctions = () => {
   };
 
   const updatePoint = (pointName: keyof typeof setters) => {
-    return function (value: number) {
-      return setters[pointName](value);
-    };
+    return (value: number) => setters[pointName](value);
   };
 
   const midpoint = { x: x1 + (x2 - x1) / 2, y: y1 + (y2 - y1) / 2 };
