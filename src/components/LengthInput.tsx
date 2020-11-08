@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 type Props = {
     length: number,
+    angle: number
     midpoint: {
         x: number,
         y: number
     },
     updateLength: (newLength: number) => void,
-    angle: number
 }
 
-const LengthBox = ({length, midpoint, updateLength, angle}: Props) => {
+const LengthInput = ({length,angle, midpoint, updateLength }: Props) => {
 
     const handleChange = (value: number) => {
         if (value === 0 || isNaN(value)) {
@@ -44,4 +44,4 @@ const StyledInput = styled.input`
             border: 2px solid #071a39
 `
 
-export default LengthBox
+export default LengthInput
