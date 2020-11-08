@@ -30,24 +30,16 @@ const useMathFunctions = () => {
     setY2(getP2(x1, y1, newLength).newY2);
   };
 
-  const updatePoint = (pointName: "x1" | "y1" | "x2" | "y2") => {
+  const setters = {
+    x1: setX1,
+    x2: setX2,
+    y1: setY1,
+    y2: setY2,
+  };
+
+  const updatePoint = (pointName: keyof typeof setters) => {
     return function (value: number) {
-      switch (pointName) {
-        case "x1":
-          setX1(value);
-          break;
-        case "y1":
-          setY1(value);
-          break;
-        case "x2":
-          setX2(value);
-          break;
-        case "y2":
-          setY2(value);
-          break;
-        default:
-          break;
-      }
+      return setters[pointName](value);
     };
   };
 
