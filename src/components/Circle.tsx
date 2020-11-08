@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import CoordinateInput from "./CoordinateInput";
 
 type Props = {
   x: number;
@@ -13,6 +14,13 @@ const Circle: React.FC<Props> = ({ x, y, changeX, changeY }) => {
   const [dY, setDY] = useState(0);
   const [dragging, setDragging] = useState(false);
 
+  const drag = (event: React.MouseEvent) => {
+    if (dragging) {
+      changeX(event.clientX - dX);
+      changeY(event.clientY - dY);
+    }
+  };
+
   return (
     <StyledCircle
       style={{
@@ -25,41 +33,33 @@ const Circle: React.FC<Props> = ({ x, y, changeX, changeY }) => {
         setDY(event.clientY - y);
       }}
       onMouseLeave={(event) => {
-        if (dragging) {
-          changeX(event.clientX - dX);
-          changeY(event.clientY - dY);
-        }
+        drag(event);
       }}
       onMouseMove={(event) => {
-        if (dragging) {
-          changeX(event.clientX - dX);
-          changeY(event.clientY - dY);
-        }
+        drag(event);
       }}
       onMouseUp={() => {
         setDragging(false);
       }}
     >
-      <span>
+      <Label>
         X
-        <StyledInput
-          type="number"
+        <CoordinateInput
           value={x.toFixed(0)}
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
             changeX(parseInt(e.currentTarget.value))
           }
         />
-      </span>
-      <span>
+      </Label>
+      <Label>
         Y
-        <StyledInput
-          type="number"
+        <CoordinateInput
           value={y.toFixed(0)}
           onChange={(e: React.FormEvent<HTMLInputElement>) =>
             changeY(parseInt(e.currentTarget.value))
           }
         />
-      </span>
+      </Label>
     </StyledCircle>
   );
 };
@@ -87,14 +87,10 @@ const StyledCircle = styled.span`
   }
 `;
 
-const StyledInput = styled.input`
-  width: 60px;
-  margin: 8px;
-  background: 0 0;
-  border: none;
-  border-bottom: 1px solid #071a39;
-  text-align: center;
-  font-size: 13px;
+const Label = styled.span`
+  &::selection {
+    background: rgba(0, 0, 0, 0);
+  }
 `;
 
 export default Circle;
