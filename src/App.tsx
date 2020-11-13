@@ -14,7 +14,7 @@ const App: React.FC = () => {
     getLength,
     getAngle,
     updateLength,
-    updatePoint,
+    pointSetters,
     midpoint,
   } = useMathFunctions();
 
@@ -30,14 +30,14 @@ const App: React.FC = () => {
       <Circle
         x={x1}
         y={y1}
-        changeX={updatePoint("x1")}
-        changeY={updatePoint("y1")}
+        changeX={pointSetters.x1}
+        changeY={pointSetters.y1}
       />
       <Circle
         x={x2}
         y={y2}
-        changeX={updatePoint("x2")}
-        changeY={updatePoint("y2")}
+        changeX={pointSetters.x2}
+        changeY={pointSetters.y2}
       />
     </StyledSpan>
   );

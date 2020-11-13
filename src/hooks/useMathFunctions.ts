@@ -30,15 +30,11 @@ const useMathFunctions = () => {
     setY2(getP2(x1, y1, newLength).newY2);
   };
 
-  const setters = {
+  const pointSetters = {
     x1: setX1,
     x2: setX2,
     y1: setY1,
     y2: setY2,
-  };
-
-  const updatePoint = (pointName: keyof typeof setters) => {
-    return (value: number) => setters[pointName](value);
   };
 
   const midpoint = { x: x1 + (x2 - x1) / 2, y: y1 + (y2 - y1) / 2 };
@@ -51,7 +47,7 @@ const useMathFunctions = () => {
     getLength,
     getAngle,
     updateLength,
-    updatePoint,
+    pointSetters,
     midpoint,
   };
 };
